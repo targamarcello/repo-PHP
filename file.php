@@ -45,7 +45,7 @@ foreach ($datiDaFile as $data) {
 }
 echo "<br><br>";
 
-//EXPLODE (bomboclat)
+//EXPLODE
 $frase = "oggi è una bella giornata";
 $arrayFrase = explode(' ',$frase);
 foreach ($arrayFrase as $parola){
@@ -55,3 +55,44 @@ $stud = explode(',',$datiDaFile[1]);
 foreach ($stud as $studente){
     echo $studente.'<br>';
 }
+
+function somma($a,$b){
+    return $a+$b;
+}
+echo somma(3,6);
+
+// con questa impostazione l'operatore conosce il tipo di dato in ingresso e uscita(riuscendo anche a dare più tipi di dato ai parametri)
+function somma2(int|float $a,int|float $b): int|float{
+    return $a+$b;
+}
+echo somma2(51,46.3);
+
+function stampa(int|string $var): void{
+    echo 'Hai passato '.$var;
+}
+echo '<br>';
+stampa(2356);
+
+function saluta(?string $nome): string{ //accetta o null o stringa
+    return 'Ciao '.($nome ?? 'Ospite');
+}
+echo '<br>';
+echo saluta('Mario');
+echo '<br>';
+echo saluta(null);
+
+$myvar = 10;
+function myFunction(&$myvar){
+    $myvar = $myvar+1;
+    echo $myvar;
+}
+echo '<br>';
+myFunction($myvar);
+echo '<br>';
+echo $myvar;
+
+function sommaTotale(...$numeri): int|float{
+    return array_sum($numeri);
+}
+echo '<br>';
+echo sommaTotale(1,4,25,5,2,5,52,6,1,7,38);
