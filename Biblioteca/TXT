@@ -1,0 +1,11 @@
+QUESTA CARTELLA SERVE PER DARE UNO STANDARD AI PROGETTI FUTURI CON DELLE CARTELLE INTERNE |
+ORGANIZZATE IN MANIERA UN PÒ DECENTE E QUESTO FILE IN PARTICOLARE SERVE PER LE CONSEGNE   |
+------------------------------------------------------------------------------------------|
+
+Creare una prima versione di un'applicativo web per la gestione di una biblioteca comunale.
+ L'applicativo prevede una pagina di benvenuto  (home page) che contiene l'ora e la data attuale  e un link
+ a una seconda pagina che contiene
+ un form per registrare gli utenti della biblioteca secondo i seguenti parametri: nome, cognome, numero (progressivo) di tessera,
+ data di iscrizione e password.
+ Creare quindi una terza pagina, solo per il debug,
+ nella quale sia possibile visualizzare in forma tabellare i dati (pwd esclusa) di tutti gli utenti registrati.
