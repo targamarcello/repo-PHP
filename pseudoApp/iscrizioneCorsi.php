@@ -1,35 +1,20 @@
 <?php
 $nCorsi = $_POST['numeroCorsi'] ?? 0;
-$professori = [
-    "Prof1" => [
-        "nome" => "Giovanni",
-        "cognome" => "Padovani"
-    ],
-    "Prof2" => [
-        "nome" => "Emiliano",
-        "cognome" => "Spiller"
-    ],
-    "Prof3" => [
-        "nome" => "Alessandro",
-        "cognome" => "Mazzullo"
-    ],
-    "Prof4" => [
-        "nome" => "Cristiano",
-        "cognome" => "Gregnanin"
-    ],
-    "Prof5" => [
-        "nome" => "Enrico Ermanno",
-        "cognome" => "Dall'Ara"
-    ],
-    "Prof6" => [
-        "nome" => "Arianna",
-        "cognome" => "Franceschetti"
-    ],
-    "Prof7" => [
-        "nome" => "Filippo",
-        "cognome" => "Gasparini"
-    ]
-];
+$json = 'professori.json';
+//verifica l'esistenza del file json
+if(file_exists($json)){
+    $professori = json_decode(file_get_contents($json),true) ?? []; //decodifica il contenuto se ha qualcosa
+}else{
+    $professori = [];
+}
+if (isset($_POST['nome'], $_POST['cognome'])) {
+    $newProf = "Prof".(count($professori) + 1);
+    $professori[$newProf] = [
+            'nome' => trim($_POST['nome']),
+            'cognome' => trim($_POST['cognome'])
+    ];
+    file_put_contents($json, json_encode($professori));
+}
 $corsi = ["sistemi e reti", "info", "statistica", "contabilità", "marketing", "tecnologie", "meccatronica", "elettronica", "chimica organica", "robotica"];
 ?>
 
@@ -44,16 +29,31 @@ $corsi = ["sistemi e reti", "info", "statistica", "contabilità", "marketing", "
     <title>Adesione Corsi</title>
 </head>
 <body>
+
+<form method="post">
+    <input type="hidden" name="numeroCorsi" value="<?= $nCorsi ?>">
+    <h2>Nuovo Professore</h2>
+    <div class="campo">
+        <label>Nome:</label> <br>
+        <input type="text" name="nome" required>
+    </div>
+    <div class="campo">
+        <label>Cognome:</label> <br>
+        <input type="text" name="cognome" required>
+    </div>
+    <button type="submit">Aggiungi</button>
+</form>
+
 <form method="post" action="tabellaCorsi.php">
-    <?php for ($i = 0; $i <= $nCorsi; $i++): ?>
+    <?php for ($i = 0; $i <= $nCorsi-1; $i++): ?>
         <div class="box">
-            <h3>Corso <?= $i ?></h3>
+            <h3>Corso <?= $i+1?></h3>
             <div class="campo">
                 <label>Professore:</label><br>
                 <label>
                     <select name="professore[<?= $i ?>]">
                         <?php foreach ($professori as $prof => $key): ?>
-                            <option value="<?= $prof ?>">
+                            <option value="<?= $key['nome'] . ';' . $key['cognome'] ?>">
                                 <?= $key['nome'] . " - " . $key['cognome'] ?>
                             </option>
                         <?php endforeach; ?>
@@ -76,5 +76,7 @@ $corsi = ["sistemi e reti", "info", "statistica", "contabilità", "marketing", "
     <?php endfor; ?>
     <button type="submit">Invia</button>
 </form>
+
+<a href="index.php">Home</a>
 </body>
 </html>

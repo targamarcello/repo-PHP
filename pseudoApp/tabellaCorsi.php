@@ -1,6 +1,6 @@
 <?php
-$professori = $_POST["professori"]??[];
-$corsi = $_POST["corsi"]??[];
+$professori = $_POST["professore"] ?? [];
+$corsi = $_POST["corsi"] ?? [];
 ?>
 
 <!doctype html>
@@ -23,15 +23,15 @@ $corsi = $_POST["corsi"]??[];
         <th>Corso/i</th>
     </tr>
 
-    <?php foreach ($professori as $prof => $key): ?>
+    <?php foreach ($professori as $i => $key): ?>
         <?php
-            list($nome, $cognome) = explode(";", $key);
-            $listaCorsi = $corsi[array_search($corsi)[$key]] ?? [];
+        list($nome, $cognome) = explode(";", $key);
+        $listaCorsi = $corsi[$i] ?? [];
         ?>
         <tr>
-            <td><?= $nome?></td>
-            <td><?= $cognome?></td>
-            <td><?= implode(',',$listaCorsi)?></td>
+            <td><?= $nome ?></td>
+            <td><?= $cognome ?></td>
+            <td><?= implode(', ', $listaCorsi) ?></td>
         </tr>
     <?php endforeach ?>
 </table>
