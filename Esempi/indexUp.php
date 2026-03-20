@@ -19,7 +19,7 @@
     <input type="text" name="cognome"><br>
 
     <label for="documento">File:</label><br>
-    <input type="file" name="documento"><br><br>
+    <input type="file" name="documento" id="documento"><br><br>
 
     <input type="submit" value="Carica File">
 </form>
