@@ -44,14 +44,14 @@ ORDER BY p.id DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <div class="sidebar">
     <h3 style="color: white; text-align: center;">FastRoute</h3>
-    <a href="dashboard.php">📊 Dashboard</a>
-    <a href="consegna.php">📦 Nuova consegna</a>
-    <a href="spedizione.php">🚚 Registra spedizione</a>
-    <a href="ritiro.php">✅ Registra ritiro</a>
-    <a href="statoSpedizione.php">🔍 Verifica stato</a>
-    <a href="statistiche.php">📈 Statistiche</a>
-    <a href="cambiaPass.php">🔑 Cambia password</a>
-    <a href="logout.php">🚪 Logout</a>
+    <a href="dashboard.php"> Dashboard</a>
+    <a href="consegna.php"> Nuova consegna</a>
+    <a href="spedizione.php"> Registra spedizione</a>
+    <a href="ritiro.php"> Registra ritiro</a>
+    <a href="statoSpedizione.php"> Verifica stato</a>
+    <a href="statistiche.php"> Statistiche</a>
+    <a href="cambiaPass.php"> Cambia password</a>
+    <a href="logout.php"> Logout</a>
 </div>
 
 <div class="content">
