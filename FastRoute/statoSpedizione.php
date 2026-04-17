@@ -4,7 +4,6 @@ $config = require 'configurations/dbConfig.php';
 $db = dbConf::getDB($config);
 session_start();
 
-// CONTROLLO LOGIN INLINE
 if (!isset($_SESSION['user_cf'])) {
     header('Location: login.php');
     exit();
@@ -66,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
         <?php if($error): ?>
-            <div class="error"><?php echo $error; ?></div>
+            <div class="error"><?= $error; ?></div>
         <?php endif; ?>
 
         <?php if($info): ?>
@@ -74,16 +73,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h3>Dettagli spedizione</h3>
                 <table>
                     <tr><th>Campo</th><th>Valore</th></tr>
-                    <tr><td>ID Plico</td><td><?php echo $info['id']; ?></td></tr>
-                    <tr><td>Mittente</td><td><?php echo $info['mittente']; ?></td></tr>
-                    <tr><td>Destinatario</td><td><?php echo $info['destinatario']; ?></td></tr>
-                    <tr><td>Sede partenza</td><td><?php echo $info['sedePartenza']; ?></td></tr>
-                    <tr><td>Sede arrivo</td><td><?php echo $info['sedeArrivo']; ?></td></tr>
-                    <tr><td>Data accettazione</td><td><?php echo $info['dataAcc'] ?: '-'; ?></td></tr>
-                    <tr><td>Data spedizione</td><td><?php echo $info['dataSpend'] ?: '-'; ?></td></tr>
-                    <tr><td>Data ritiro</td><td><?php echo $info['dataRit'] ?: '-'; ?></td></tr>
+                    <tr><td>ID Plico</td><td><?= $info['id']; ?></td></tr>
+                    <tr><td>Mittente</td><td><?0 $info['mittente']; ?></td></tr>
+                    <tr><td>Destinatario</td><td><?= $info['destinatario']; ?></td></tr>
+                    <tr><td>Sede partenza</td><td><?= $info['sedePartenza']; ?></td></tr>
+                    <tr><td>Sede arrivo</td><td><?= $info['sedeArrivo']; ?></td></tr>
+                    <tr><td>Data accettazione</td><td><?= $info['dataAcc'] ?: '-'; ?></td></tr>
+                    <tr><td>Data spedizione</td><td><?= $info['dataSpend'] ?: '-'; ?></td></tr>
+                    <tr><td>Data ritiro</td><td><?= $info['dataRit'] ?: '-'; ?></td></tr>
                     <tr><td><strong>STATO</strong></td>
-                        <td><strong><?php echo getStatus($info['dataAcc'], $info['dataSpend'], $info['dataRit']); ?></strong></td>
+                        <td><strong><? getStatus($info['dataAcc'], $info['dataSpend'], $info['dataRit']); ?></strong></td>
                 </table>
             </div>
         <?php endif; ?>
