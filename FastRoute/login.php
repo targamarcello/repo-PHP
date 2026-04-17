@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="login-box">
     <h2>Login FastRoute</h2>
     <?php if($error): ?>
-        <div class="error"><?php echo $error; ?></div>
+        <div class="error"><?= $error; ?></div>
     <?php endif; ?>
     <form method="POST">
         <div class="form-group">
