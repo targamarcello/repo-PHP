@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="login-box">
     <h2>Modifica Password</h2>
     <?php if($error): ?>
-        <div class="error"><?php echo $error; ?></div>
+        <div class="error"><?= $error; ?></div>
     <?php endif; ?>
     <?php if($success): ?>
         <div class="success">Password modificata! <a href="dashboard.php">Vai alla dashboard</a></div>
