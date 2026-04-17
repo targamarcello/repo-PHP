@@ -4,7 +4,6 @@ $config = require 'configurations/dbConfig.php';
 $db = dbConf::getDB($config);
 session_start();
 
-// CONTROLLO LOGIN INLINE
 if (!isset($_SESSION['user_cf'])) {
     header('Location: login.php');
     exit();
@@ -40,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <div class="container">
     <div class="card">
-        <h2>🚚 Registra spedizione</h2>
+        <h2> Registra spedizione</h2>
         <a href="dashboard.php">← Torna alla dashboard</a>
 
         <?php if($error): ?>
-            <div class="error"><?php echo $error; ?></div>
+            <div class="error"><?= $error; ?></div>
         <?php endif; ?>
         <?php if($success): ?>
-            <div class="success"><?php echo $success; ?></div>
+            <div class="success"><?= $success; ?></div>
         <?php endif; ?>
 
         <form method="POST">
@@ -56,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <select name="id_plico" required>
                     <option value="">Scegli...</option>
                     <?php foreach($plici as $p): ?>
-                        <option value="<?php echo $p['id']; ?>">Plico #<?php echo $p['id']; ?> - <?php echo $p['mittente']; ?></option>
+                        <option value="<?= $p['id']; ?>">Plico #<?= $p['id']; ?> - <?= $p['mittente']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
