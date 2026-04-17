@@ -60,14 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <div class="container">
     <div class="card">
-        <h2>📦 Nuova consegna</h2>
+        <h2> Nuova consegna</h2>
         <a href="dashboard.php">← Torna alla dashboard</a>
 
         <?php if($error): ?>
-            <div class="error"><?php echo $error; ?></div>
+            <div class="error"><?= $error; ?></div>
         <?php endif; ?>
         <?php if($success): ?>
-            <div class="success"><?php echo $success; ?></div>
+            <div class="success"><?= $success; ?></div>
         <?php endif; ?>
 
         <form method="POST">
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label>Sede partenza:</label>
                 <select name="sede_partenza" required>
                     <?php foreach($sedi as $s): ?>
-                        <option value="<?php echo $s['id']; ?>"><?php echo $s['nome'] . " - " . $s['citta']; ?></option>
+                        <option value="<?= $s['id']; ?>"><?= $s['nome'] . " - " . $s['citta']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label>Sede arrivo:</label>
                 <select name="sede_arrivo" required>
                     <?php foreach($sedi as $s): ?>
-                        <option value="<?php echo $s['id']; ?>"><?php echo $s['nome'] . " - " . $s['citta']; ?></option>
+                        <option value="<?= $s['id']; ?>"><?= $s['nome'] . " - " . $s['citta']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
