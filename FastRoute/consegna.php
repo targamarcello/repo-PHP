@@ -4,7 +4,6 @@ $config = require 'configurations/dbConfig.php';
 $db = dbConf::getDB($config);
 session_start();
 
-// CONTROLLO LOGIN INLINE
 if (!isset($_SESSION['user_cf'])) {
     header('Location: login.php');
     exit();
