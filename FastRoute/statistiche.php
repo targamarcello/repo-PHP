@@ -39,20 +39,20 @@ FROM plichi")->fetch(PDO::FETCH_ASSOC);
 <body>
 <div class="container">
     <div class="card">
-        <h2>📈 Statistiche</h2>
+        <h2>Statistiche</h2>
         <a href="dashboard.php">← Torna alla dashboard</a>
 
         <div class="stats">
             <div class="stat-box">
-                <div class="stat-number"><?php echo $totali['tot']; ?></div>
+                <div class="stat-number"><?= $totali['tot']; ?></div>
                 <p>Totale spedizioni</p>
             </div>
             <div class="stat-box">
-                <div class="stat-number"><?php echo $totali['ritirati']; ?></div>
+                <div class="stat-number"><?= $totali['ritirati']; ?></div>
                 <p>Ritirati</p>
             </div>
             <div class="stat-box">
-                <div class="stat-number"><?php echo $totali['transito']; ?></div>
+                <div class="stat-number"><?= $totali['transito']; ?></div>
                 <p>In transito</p>
             </div>
         </div>
@@ -68,8 +68,8 @@ FROM plichi")->fetch(PDO::FETCH_ASSOC);
 
         <?php if($result): ?>
             <div style="margin-top: 20px; padding: 20px; background: #e8f5e9; text-align: center;">
-                <div class="stat-number"><?php echo $result['totale']; ?></div>
-                <p>plici ritirati negli ultimi <?php echo $days; ?> giorni</p>
+                <div class="stat-number"><?= $result['totale']; ?></div>
+                <p>plici ritirati negli ultimi <?= $days; ?> giorni</p>
             </div>
         <?php endif; ?>
     </div>
