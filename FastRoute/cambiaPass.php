@@ -3,8 +3,7 @@ require './configurations/dbConf.php';
 $config = require 'configurations/dbConfig.php';
 $db = dbConf::getDB($config);
 session_start();
-require'functions/extra.php';
-requireLogin();
+
 
 $error = '';
 $success = '';
