@@ -4,7 +4,6 @@ $config = require 'configurations/dbConfig.php';
 $db = dbConf::getDB($config);
 session_start();
 
-// CONTROLLO LOGIN
 if (!isset($_SESSION['user_cf'])) {
     header('Location: login.php');
     exit();
@@ -18,13 +17,11 @@ function getStatus($dataAcc, $dataSpend, $dataRit) {
     return "In attesa";
 }
 
-// Statistiche
 $stats = $db->query("SELECT 
     COUNT(*) as totale,
     SUM(CASE WHEN dataRit IS NOT NULL THEN 1 ELSE 0 END) as ritirati
 FROM plichi")->fetch(PDO::FETCH_ASSOC);
 
-// Ultimi plici
 $plici = $db->query("SELECT p.*, 
     CONCAT(p1.nome, ' ', p1.cognome) as mittente_nome,
     CONCAT(p2.nome, ' ', p2.cognome) as dest_nome
@@ -56,17 +53,17 @@ ORDER BY p.id DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="content">
     <div class="card">
-        <h2>Benvenuto, <?php echo $_SESSION['user_name']; ?>!</h2>
-        <p><?php echo date('d/m/Y H:i:s'); ?></p>
+        <h2>Benvenuto, <?= $_SESSION['user_name']; ?>!</h2>
+        <p><?= date('d/m/Y H:i:s'); ?></p>
     </div>
 
     <div class="stats">
         <div class="stat-box">
-            <div class="stat-number"><?php echo $stats['totale']; ?></div>
+            <div class="stat-number"><?= $stats['totale']; ?></div>
             <p>Totale spedizioni</p>
         </div>
         <div class="stat-box">
-            <div class="stat-number"><?php echo $stats['ritirati']; ?></div>
+            <div class="stat-number"><?= $stats['ritirati']; ?></div>
             <p>Ritirati</p>
         </div>
     </div>
@@ -80,11 +77,11 @@ ORDER BY p.id DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
             <?php foreach($plici as $p): ?>
                 <tr>
-                    <td><?php echo $p['id']; ?></td>
-                    <td><?php echo $p['mittente_nome']; ?></td>
-                    <td><?php echo $p['dest_nome']; ?></td>
-                    <td><?php echo getStatus($p['dataAcc'], $p['dataSpend'], $p['dataRit']); ?></td>
-                    <td><?php echo $p['dataAcc']; ?></td>
+                    <td><?= $p['id']; ?></td>
+                    <td><?= $p['mittente_nome']; ?></td>
+                    <td><?= $p['dest_nome']; ?></td>
+                    <td><?= getStatus($p['dataAcc'], $p['dataSpend'], $p['dataRit']); ?></td>
+                    <td><?= $p['dataAcc']; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
